@@ -1,4 +1,13 @@
 body{
     font-size: 24px;
     color: purple;
+    background: linear-gradient(black,blue);
+    background-size: cover;
+}
+table{
+    background: linear-gradient(yellow, orange);
+    border-radius: 15px;
+}
+tr{
+    border-color: rgba(0,0,0,0);
 }
