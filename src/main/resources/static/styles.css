@@ -1,4 +1,9 @@
-body{
-    font-size: 24px;
-    color: purple;
+.navbar-nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.nav-item{
+    margin: 0 5px;
+    font-weight: 900;
 }
