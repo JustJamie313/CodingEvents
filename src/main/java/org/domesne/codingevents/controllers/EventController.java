@@ -1,5 +1,6 @@
 package org.domesne.codingevents.controllers;
 
+import org.domesne.codingevents.models.Event;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,7 @@ import java.util.List;
 @Controller
 @RequestMapping("events")
 public class EventController {
-    private static List<String> events = new ArrayList<>();
+    private static List<Event> events = new ArrayList<>();
     @GetMapping
     public String displayAllEvents(Model model) {
         model.addAttribute("events",events);
@@ -27,7 +28,7 @@ public class EventController {
 
     @PostMapping("create")
     public String createEvent(@RequestParam String eventName){
-        events.add(eventName);
+        events.add(new Event(eventName));
         return "redirect:";
     }
 }
