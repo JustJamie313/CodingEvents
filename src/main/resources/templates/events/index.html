@@ -8,16 +8,14 @@
 
         <table class="table table-striped">
             <thead>
-                <th>Event ID</th>
+                <th>Event</th>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Edit?</th>
             </thead>
             <tr th:each="event : ${events}">
-                <td th:text="${event.id}"></td>
+                <td><label th:text="${event.id}"></label><a th:href='@{/events/edit/{id}(id=${event.id})}' class='btn btn-info'>Edit</a></td>
                 <td th:text="${event.name}" ></td>
                 <td th:text="${event.description}"></td>
-                <td><a th:href="@{/events/edit/{id}(id=${event.id})}" class="btn">Edit</a></td>
             </tr>
         </table>
     </body>
