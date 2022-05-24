@@ -30,15 +30,20 @@ public class Event {
     @FutureOrPresent(message="Event Date cannot be a date in the past.")
     private Date eventDate;
 
-    public Event(String name, String description, String contactEmail, String eventLocation) {
+    private EventType type;
+
+    public Event(String name, String description, String contactEmail, String eventLocation, EventType type) {
+        this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
         this.eventLocation = eventLocation;
+        this.type = type;
+    }
+    public Event(){
         this.id = nextID;
         nextID++;
     }
-    public Event(){}
 
     public String getName() {
         return name;
@@ -98,6 +103,14 @@ public class Event {
 
     public int getId() {
         return id;
+    }
+
+    public EventType getType() {
+        return type;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
     }
 
     @Override

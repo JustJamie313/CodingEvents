@@ -9,6 +9,13 @@
                 <p class="error" th:errors="${event.name}"></p>
             </div>
             <div class="form-group">
+                <label>Event Type:
+                <select th:field="${event.type}">
+                    <option th:each="type : ${types}" th:text="${type.displayName}" th:value="${type}"></option>
+                </select></label>
+                <p class="error" th:errors="${event.type}"></p>
+            </div>
+            <div class="form-group">
                 <label>Date: <input type="date" th:field="${event.eventDate}"/></label>
                 <p class="error" th:errors="${event.eventDate}"></p>
             </div>
