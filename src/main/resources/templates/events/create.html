@@ -9,12 +9,28 @@
                 <p class="error" th:errors="${event.name}"></p>
             </div>
             <div class="form-group">
+                <label>Date: <input type="date" th:field="${event.eventDate}"/></label>
+                <p class="error" th:errors="${event.eventDate}"></p>
+            </div>
+            <div class="form-group">
                 <label>Description: <textarea th:field="${event.description}" class="form-control"/></label>
                 <p class="error" th:errors="${event.description}"></p>
             </div>
             <div class="form-group">
+                <label>Location: <textarea th:field="${event.eventLocation}" class="form-control"/></label>
+                <p class="error" th:errors="${event.eventLocation}"></p>
+            </div>
+            <div class="form-group">
+                <label>Attendance Capacity: <input type="number" th:field="${event.attendanceCapacity}" class="form-control"/></label>
+                <p class="error" th:errors="${event.attendanceCapacity}"></p>
+            </div>
+            <div class="form-group">
                 <label>Contact Email: <input th:field="${event.contactEmail}" class="form-control"/></label>
                 <p class="error" th:errors="${event.contactEmail}"></p>
+            </div>
+            <div class="form-group">
+                <label>Registration Required: <input type="checkbox" th:field="${event.registrationRequired}"/></label>
+                <p class="error" th:errors="${event.registrationRequired}"></p>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create Event" class="btn btn-success"/>

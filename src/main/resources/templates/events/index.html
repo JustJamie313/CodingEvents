@@ -10,14 +10,22 @@
             <thead>
                 <th>Event ID</th>
                 <th>Name</th>
+                <th>Date</th>
                 <th>Description</th>
+                <th>Location</th>
+                <th>Maximum Attendees</th>
                 <th>Contact Email</th>
+                <th>Registration Required?</th>
             </thead>
             <tr th:each="event : ${events}">
                 <td th:text="${event.id}"></td>
                 <td th:text="${event.name}" ></td>
+                <td th:text="${event.eventDate}" ></td>
                 <td th:text="${event.description}" ></td>
+                <td th:text="${event.eventLocation}" ></td>
+                <td th:text="${event.attendanceCapacity}" ></td>
                 <td th:text="${event.contactEmail}" ></td>
+                <td th:text="${event.registrationRequired==true}?Yes:No" ></td>
             </tr>
         </table>
     </body>
