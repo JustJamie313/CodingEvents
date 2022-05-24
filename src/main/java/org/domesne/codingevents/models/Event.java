@@ -22,6 +22,7 @@ public class Event {
         this.id = nextID;
         nextID++;
     }
+    public Event(){}
 
     public String getName() {
         return name;
