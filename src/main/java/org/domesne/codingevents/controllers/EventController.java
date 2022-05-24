@@ -4,12 +4,14 @@ import org.domesne.codingevents.data.EventData;
 import org.domesne.codingevents.models.Event;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.text.CollationElementIterator;
 
 import static java.util.Objects.isNull;
@@ -20,23 +22,31 @@ public class EventController {
 
     @GetMapping
     public String displayAllEvents(Model model) {
+        model.addAttribute("title","All Events");
         model.addAttribute("events", EventData.getAllEvents());
         return "events/index";
     }
 
     @GetMapping("create")
-    public String renderCreateEventForm(){
+    public String displayCreateEventForm(Model model){
+        model.addAttribute("title","Create Event");
         return "events/create";
     }
 
     @PostMapping("create")
-    public String createEvent(@ModelAttribute Event newEvent){
+    public String processCreateEventForm(@ModelAttribute @Valid Event newEvent, Errors errors, Model model){
+        if(errors.hasErrors()){
+            model.addAttribute("title","Create Event");
+            model.addAttribute("errors",errors);
+            return "events/create";
+        }
         EventData.addEvent(newEvent);
         return "redirect:";
     }
 
     @GetMapping("delete")
     public String displayDeleteEventForm(Model model){
+        model.addAttribute("title","Delete Events");
         model.addAttribute("events",EventData.getAllEvents());
         return "events/delete";
     }
