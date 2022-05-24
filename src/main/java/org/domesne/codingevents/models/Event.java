@@ -1,16 +1,23 @@
 package org.domesne.codingevents.models;
 
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 public class Event {
     private int id;
     private static int nextID = 1;
+    @Size(min = 3, max = 50, message="Name must be between 3 and 50 characters")
+    @NotBlank(message = "Name cannot be blank")
     private String name;
+    @Size(max=500, message="Description Too Long")
     private String description;
+    @Email(maessage="Invalid E-mail")
+    private String contactEmail;
 
-    public Event(String name, String description) {
+    public Event(String name, String description, String contactEmail) {
         this.name = name;
         this.description = description;
+        this.contactEmail = contactEmail;
         this.id = nextID;
         nextID++;
     }
@@ -29,6 +36,14 @@ public class Event {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getContactEmail() {
+        return contactEmail;
+    }
+
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
     }
 
     public int getId() {
